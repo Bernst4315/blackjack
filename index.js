@@ -1,6 +1,7 @@
 const newGameBtn = document.getElementById("new-game-btn")
 const checkDeckBtn = document.getElementById('check-deck-btn')
 const drawCardBtn = document.getElementById("draw-card-btn")
+const handDiv = document.getElementById("hand")
 
 let deckId = ""
 let handSetUp = false
@@ -55,21 +56,27 @@ function drawCard(){
                 console.log(data.cards)
                 hand = data.cards
                 console.log(hand)
+                for (let card of hand){
+                    handDiv.innerHTML += `<img src="${card.image}">`
+                }
             })
-
             
-
-    } else {
-
-        fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
+            
+            
+        } else {
+            
+            fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
             .then(res => res.json())
             .then(data => {
                 console.log(data.cards)
                 hand.push(data.cards[0])
+                handDiv.innerHTML += `<img src="${data.cards[0].image}">`
                 console.log(hand)
             })
+
+        }
+        
     }
-}
 
 function checkDeck(){
     console.log("click from check deck")

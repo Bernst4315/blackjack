@@ -4,5 +4,10 @@
 
 body {
     background-color: rgb(17, 102, 17);
-    
+    text-align: center;
+}
+
+img {
+    width: 125px;
+    margin: 5px;  
 }
