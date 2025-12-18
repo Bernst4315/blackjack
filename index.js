@@ -4,6 +4,7 @@ const drawCardBtn = document.getElementById("draw-card-btn")
 
 let deckId = ""
 let handSetUp = false
+let hand = []
 
 /*
 new game button:
@@ -47,10 +48,14 @@ function drawCard(){
     if(!handSetUp){
 
         handSetUp = true
-        
+
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data.cards)
+                hand = data.cards
+                console.log(hand)
+            })
 
             
 
@@ -58,7 +63,11 @@ function drawCard(){
 
         fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=1`)
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data.cards)
+                hand.push(data.cards[0])
+                console.log(hand)
+            })
     }
 }
 
