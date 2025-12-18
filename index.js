@@ -1,5 +1,6 @@
-const newGameBtn = document.getElementById("new-game-btn"); 
+const newGameBtn = document.getElementById("new-game-btn")
 const checkDeckBtn = document.getElementById('check-deck-btn')
+const drawCardBtn = document.getElementById("draw-card-btn")
 
 let deckId = ""
 
@@ -19,6 +20,7 @@ newGameBtn.addEventListener("click", newGame)
 
 checkDeckBtn.addEventListener("click", checkDeck)
 
+drawCardBtn.addEventListener("click", drawCard)
 
 
 function newGame(){
@@ -36,6 +38,13 @@ function getDeck(){
         deckId = data.deck_id
         console.log(deckId)
     })
+}
+
+function drawCard(){
+    console.log("you drew a card")
+    fetch(`https://deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+        .then(res => res.json())
+        .then(data => console.log(data))
 }
 
 function checkDeck(){
