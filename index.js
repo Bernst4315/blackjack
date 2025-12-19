@@ -1,6 +1,7 @@
 const newGameBtn = document.getElementById("new-game-btn")
 const checkDeckBtn = document.getElementById('check-deck-btn')
 const drawCardBtn = document.getElementById("draw-card-btn")
+const standBtn = document.getElementById("stand-btn")
 const handDiv = document.getElementById("hand")
 
 let deckId = ""
@@ -15,6 +16,8 @@ set game board
 keep track if game started = true 
     if clicked when true, user prompt tht doing so will restart game
     suffle deck for new game 
+to resuse deck, new game could shuffle old deck.
+need to make getDeck not work if win/lose conditions are met 
 
 
 */
@@ -24,6 +27,8 @@ newGameBtn.addEventListener("click", newGame)
 checkDeckBtn.addEventListener("click", checkDeck)
 
 drawCardBtn.addEventListener("click", drawCard)
+
+standBtn.addEventListener("click", stand)
 
 
 function newGame(){
@@ -77,6 +82,11 @@ function drawCard(){
         }
         
     }
+
+function stand(){
+    console.log("stand")
+    //needs to check score
+}
 
 function checkDeck(){
     console.log("click from check deck")
